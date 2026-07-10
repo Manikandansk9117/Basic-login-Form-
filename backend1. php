@@ -1,0 +1,36 @@
+<?php
+session_start();
+
+// Sample username and password
+$validUsername = "admin";
+$validPassword = "admin123";
+
+// Check whether the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // Validate username and password
+    if ($username == $validUsername && $password == $validPassword) {
+
+        $_SESSION["username"] = $username;
+
+        echo "<h2>Login Successful!</h2>";
+        echo "<p>Welcome, <b>$username</b></p>";
+        echo "<p>You have successfully logged in.</p>";
+
+    } else {
+
+        echo "<h2>Login Failed!</h2>";
+        echo "<p>Invalid Username or Password.</p>";
+        echo "<a href='index.html'>Go Back</a>";
+
+    }
+
+} else {
+
+    echo "Access Denied!";
+
+}
+?>
